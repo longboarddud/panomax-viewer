@@ -2,13 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Panomax Thumbnail Viewer</title>
-  <script type="text/javascript" src="https://static.panomax.com/front/thumbnail/js/pmaxthumbnail.js"></script>
+  <title>Panomax Thumbnail</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      width: 1920px; /* ensure enough room for scrolling */
+      height: 1080px;
+    }
+    #panomax-thumbnail {
+      width: 1920px;
+      height: 1080px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+  <script src="https://static.panomax.com/front/thumbnail/js/pmaxthumbnail.js"></script>
 </head>
 <body>
-  <div id="pmax-thumbnail-container"></div>
+  <div id="panomax-thumbnail"></div>
 
-  <script type="text/javascript">
+  <script>
     PmaxThumbnail.place({
       "instance": 4053605,
       "width": "1920",
@@ -19,6 +35,13 @@
       "instanceLogo": false,
       "timelapse": false
     });
+
+    // Scroll browser to center of page
+    window.onload = function () {
+      const scrollX = (document.body.scrollWidth - window.innerWidth) / 2;
+      const scrollY = (document.body.scrollHeight - window.innerHeight) / 2;
+      window.scrollTo(scrollX, scrollY);
+    };
   </script>
 </body>
 </html>
